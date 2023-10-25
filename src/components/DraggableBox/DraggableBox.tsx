@@ -28,9 +28,7 @@ const DraggableBox: FC<DragableProps> = ({ children }) => {
     const box = boxRef.current;
     const container = containerRef.current;
 
-    if (container) {
-      coords.current.lastX = container.clientWidth / 2;
-    }
+    coords.current.lastX = container.clientWidth / 2;
 
     const onMouseDown = (e: MouseEvent) => {
       isClicked.current = true;

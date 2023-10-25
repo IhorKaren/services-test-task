@@ -43,3 +43,8 @@ main {
 
   cursor: move;
 }
+
+.categories {
+  display: flex;
+  align-items: center;
+}
