@@ -1,11 +1,9 @@
-import DragableBox from './DragableBox/DragableBox';
+import DraggableBox from './DraggableBox/DraggableBox';
 
 export const App = () => {
   return (
     <main>
-      <div className="container">
-        <DragableBox>Start</DragableBox>
-      </div>
+      <DraggableBox>Start</DraggableBox>
     </main>
   );
 };
