@@ -1,6 +1,7 @@
 import { useState, FC } from 'react';
 
 import { CategoryItem } from 'components/Categories/Categories';
+import CategoriesItem from 'components/CategoriesItem/CategoriesItem';
 
 type CategoryProps = {
   el: CategoryItem;
@@ -8,54 +9,41 @@ type CategoryProps = {
 };
 
 const Category: FC<CategoryProps> = ({ el, onRemove }) => {
-  const [categoryName, setCategoryName] = useState('');
-  const [isInputShown, setIsInputShown] = useState(true);
+  const [subCategories, setSubCategories] = useState<CategoryItem[]>([]);
 
-  const addCategoryTitle = () => {
-    if (categoryName.trim() === '') {
-      return;
-    }
+  const addEmptySubCategory = () => {
+    const newCategory = {
+      id: Math.random() * 1000000,
+      title: '',
+    };
 
-    el.title = categoryName;
-    setIsInputShown(false);
+    setSubCategories(p => [...p, newCategory]);
   };
 
-  const changeCategoryTitle = () => {
-    setIsInputShown(true);
+  const removeSubCategory = (id: number) => {
+    setSubCategories(p => subCategories.filter(el => el.id !== id));
   };
 
   return (
-    <>
-      <li>
-        {isInputShown && (
-          <div>
-            <input
-              type="text"
-              value={categoryName}
-              onChange={e => setCategoryName(e.target.value)}
-              placeholder="Category name"
-            />
-            <button type="button" onClick={() => onRemove(el.id)}>
-              Delete
-            </button>
-            <button type="button" onClick={addCategoryTitle}>
-              OK
-            </button>
-          </div>
-        )}
-        {!isInputShown && (
-          <div>
-            <h3>{el.title}</h3>
-            <button type="button" onClick={changeCategoryTitle}>
-              Change
-            </button>
-            <button type="button" onClick={() => onRemove(el.id)}>
-              Delete
-            </button>
-          </div>
-        )}
-      </li>
-    </>
+    <li className="categories-item">
+      <CategoriesItem el={el} onAdd={addEmptySubCategory} onRemove={onRemove}>
+        <ul className="subcategories-list">
+          {subCategories.length !== 0 &&
+            subCategories.map(item => {
+              return (
+                <CategoriesItem
+                  key={item.id}
+                  el={item}
+                  onAdd={addEmptySubCategory}
+                  onRemove={removeSubCategory}
+                >
+                  {null}
+                </CategoriesItem>
+              );
+            })}
+        </ul>
+      </CategoriesItem>
+    </li>
   );
 };
 

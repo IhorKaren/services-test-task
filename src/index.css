@@ -9,6 +9,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -21,6 +27,16 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
 }
 
 .container {
@@ -44,7 +60,123 @@ main {
   cursor: move;
 }
 
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.categories-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-bottom: 30px;
+}
+
 .categories {
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: white;
+
+  border-radius: 4px;
+  border: 2px dashed rgb(172, 172, 172);
+}
+
+.categories-list {
+  display: flex;
+  gap: 120px;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.categories-list .categories-item-wrap {
+  background-color: orange;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+  border: none;
+}
+
+.categories-item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+
+  gap: 20px;
+}
+
+.categories-input {
+  max-width: 160px;
+  height: 40px;
+  outline: none;
+  border: none;
+  text-align: center;
+  padding: 10px;
+
+  border: 2px solid rgb(172, 172, 172);
+}
+
+.categories-list .categories-item-wrap {
+  background-color: rgba(255, 154, 72, 0.877);
+}
+
+.categories-input-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.categories-item-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+
+  border: 1px solid rgb(172, 172, 172);
+}
+
+.subcategory-title {
+  text-align: center;
+}
+
+.buttons-wrap {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  gap: 4px;
+  right: calc(-100% - 10px);
+}
+
+.subcategories-list {
+  display: flex;
+  gap: 120px;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.subcategories-list .categories-item-wrap {
+  background-color: skyblue;
 }

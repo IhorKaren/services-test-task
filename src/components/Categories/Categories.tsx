@@ -11,7 +11,7 @@ const Categories = () => {
 
   const addEmptyCategory = () => {
     const newCategory = {
-      id: categories.length + 1,
+      id: Math.random() * 1000000,
       title: '',
     };
 
@@ -24,22 +24,18 @@ const Categories = () => {
 
   return (
     <>
-      <div className="categories">
-        <h2>Categories</h2>
-        <button type="button" onClick={addEmptyCategory}>
-          Plus
+      <div className="categories-wrap">
+        <div className="categories">
+          <h2>Categories</h2>
+        </div>
+        <button className="button" type="button" onClick={addEmptyCategory}>
+          ➕
         </button>
       </div>
-      <ul>
+      <ul className="categories-list">
         {categories.length !== 0 &&
           categories.map(el => {
-            return (
-              <Category
-                key={el.id}
-                el={el}
-                onRemove={removeCategory}
-              />
-            );
+            return <Category key={el.id} el={el} onRemove={removeCategory} />;
           })}
       </ul>
     </>
