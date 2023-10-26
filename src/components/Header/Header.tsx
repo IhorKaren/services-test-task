@@ -1,22 +1,30 @@
 import { FC, ChangeEvent } from 'react';
-
-const options = [0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.25, 1.5];
+import { options } from 'components/App';
 
 type HeaderProps = {
   scale: number;
+  centred: () => void;
   decrement: () => void;
   increment: () => void;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
 
-const Header: FC<HeaderProps> = ({ scale, decrement, increment, onChange }) => {
+const Header: FC<HeaderProps> = ({
+  scale,
+  centred,
+  decrement,
+  increment,
+  onChange,
+}) => {
   return (
     <header className="header">
       <h1 className="main-title">
         Services <span>0</span>
       </h1>
       <div>
-        <button type="button">Centered</button>
+        <button type="button" onClick={centred}>
+          Centered
+        </button>
 
         <div>
           <button type="button" onClick={decrement}>

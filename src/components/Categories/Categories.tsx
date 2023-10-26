@@ -32,13 +32,7 @@ const Categories: FC<CategoriesProps> = ({ scale }) => {
       <ul className="categories-list" style={{ transform: `scale(${scale})` }}>
         {categories.length !== 0 &&
           categories.map(el => {
-            return (
-              <Category
-                key={el.id}
-                el={el}
-                onRemove={removeCategory}
-              />
-            );
+            return <Category key={el.id} el={el} onRemove={removeCategory} />;
           })}
       </ul>
     </>

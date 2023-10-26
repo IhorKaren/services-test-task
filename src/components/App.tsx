@@ -3,16 +3,29 @@ import Header from './Header/Header';
 import DraggableBox from './DraggableBox/DraggableBox';
 import Categories from './Categories/Categories';
 
-const options = [0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.25, 1.5];
+export const options = [
+  0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.25, 1.5,
+];
 
 export const App = () => {
   const [index, setIndex] = useState(8);
   const [scale, setScale] = useState(1);
+  const [isCentered, setIsCentered] = useState(false);
 
   const handleScaleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const toNumber = Number(e.target.value);
+    const scaleIndex = options.findIndex(el => toNumber === el);
 
     setScale(toNumber);
+    setIndex(scaleIndex);
+  };
+
+  const onCenteredBoxBtnClick = () => {
+    setIsCentered(true);
+  };
+
+  const onCenteredBoxDisabledBtnClick = () => {
+    setIsCentered(false);
   };
 
   const onZoomDecrementBtnClick = () => {
@@ -33,12 +46,16 @@ export const App = () => {
     <>
       <Header
         scale={scale}
+        centred={onCenteredBoxBtnClick}
         decrement={onZoomDecrementBtnClick}
         increment={onZoomIncrementBtnClick}
         onChange={handleScaleChange}
       />
       <main>
-        <DraggableBox>
+        <DraggableBox
+          isCentered={isCentered}
+          centeredDisable={onCenteredBoxDisabledBtnClick}
+        >
           <Categories scale={scale} />
         </DraggableBox>
       </main>

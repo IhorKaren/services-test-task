@@ -1,10 +1,16 @@
 import { FC, ReactNode, useEffect, useRef } from 'react';
 
 type DragableProps = {
+  isCentered: boolean;
+  centeredDisable: () => void;
   children: ReactNode;
 };
 
-const DraggableBox: FC<DragableProps> = ({ children }) => {
+const DraggableBox: FC<DragableProps> = ({
+  isCentered,
+  centeredDisable,
+  children,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -30,13 +36,18 @@ const DraggableBox: FC<DragableProps> = ({ children }) => {
     const box = boxRef.current;
     const container = containerRef.current;
 
-    coords.current.lastX = container.clientWidth / 2;
+    coords.current.lastX = box.getBoundingClientRect().left;
+
+    if (isCentered) {
+      coords.current.lastY = container.clientHeight / 3.5;
+      coords.current.lastX = container.clientWidth / 1.7;
+    }
 
     const onMouseDown = (e: MouseEvent) => {
       isClicked.current = true;
-
       coords.current.startX = e.clientX;
       coords.current.startY = e.clientY;
+      centeredDisable();
     };
 
     const onMouseUp = (e: MouseEvent) => {
@@ -68,11 +79,18 @@ const DraggableBox: FC<DragableProps> = ({ children }) => {
       container.removeEventListener('mousemove', onMouseMove);
       container.removeEventListener('mouseleave', onMouseUp);
     };
-  }, []);
+  });
 
   return (
     <div ref={containerRef} className="container">
-      <div ref={boxRef} className="box">
+      <div
+        ref={boxRef}
+        className="box"
+        style={{
+          top: isCentered ? `30%` : '',
+          left: isCentered ? '45%' : '',
+        }}
+      >
         {children}
       </div>
     </div>
