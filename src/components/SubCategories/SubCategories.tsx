@@ -2,7 +2,6 @@ import { useState, FC } from 'react';
 
 import { CategoryItem } from 'components/App.types';
 import addCategory from 'services/addCategory';
-import SubCategories from 'components/SubCategories/SubCategories';
 import CategoriesItem from 'components/CategoriesItem/CategoriesItem';
 
 type CategoryProps = {
@@ -10,7 +9,7 @@ type CategoryProps = {
   onRemove: (id: number) => void;
 };
 
-const Category: FC<CategoryProps> = ({ el, onRemove }) => {
+const SubCategories: FC<CategoryProps> = ({ el, onRemove }) => {
   const [subCategories, setSubCategories] = useState<CategoryItem[]>([]);
 
   const addEmptySubCategory = () => {
@@ -24,15 +23,18 @@ const Category: FC<CategoryProps> = ({ el, onRemove }) => {
   return (
     <>
       <CategoriesItem el={el} onAdd={addEmptySubCategory} onRemove={onRemove}>
-        <ul className="subcategories-list__primary">
+        <ul className="subcategories-list__secondary">
           {subCategories.length !== 0 &&
             subCategories.map(item => {
               return (
-                <SubCategories
+                <CategoriesItem
                   key={item.id}
                   el={item}
+                  onAdd={addEmptySubCategory}
                   onRemove={removeSubCategory}
-                />
+                >
+                  {null}
+                </CategoriesItem>
               );
             })}
         </ul>
@@ -41,4 +43,4 @@ const Category: FC<CategoryProps> = ({ el, onRemove }) => {
   );
 };
 
-export default Category;
+export default SubCategories;

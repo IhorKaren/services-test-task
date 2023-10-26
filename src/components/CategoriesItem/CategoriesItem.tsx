@@ -1,6 +1,6 @@
 import { useState, FC, ReactNode } from 'react';
 
-import { CategoryItem } from 'components/Categories/Categories';
+import { CategoryItem } from 'components/App.types';
 
 type CategoryProps = {
   el: CategoryItem;
@@ -27,7 +27,8 @@ const CategoriesItem: FC<CategoryProps> = ({
     setIsInputShown(false);
   };
 
-  const changeCategoryTitle = () => {
+  const changeCategoryTitle = (title: string) => {
+    setCategoryName(title);
     setIsInputShown(true);
   };
 
@@ -74,7 +75,7 @@ const CategoriesItem: FC<CategoryProps> = ({
               <button
                 className="button"
                 type="button"
-                onClick={changeCategoryTitle}
+                onClick={() => changeCategoryTitle(el.title)}
               >
                 ✏
               </button>

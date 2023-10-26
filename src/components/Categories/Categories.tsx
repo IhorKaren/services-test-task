@@ -1,21 +1,14 @@
 import { useState } from 'react';
 import Category from 'components/Category/Category';
 
-export type CategoryItem = {
-  id: number;
-  title: string;
-};
+import { CategoryItem } from 'components/App.types';
+import addCategory from 'services/addCategory';
 
 const Categories = () => {
   const [categories, setCategories] = useState<CategoryItem[]>([]);
 
   const addEmptyCategory = () => {
-    const newCategory = {
-      id: Math.random() * 1000000,
-      title: '',
-    };
-
-    setCategories(p => [...p, newCategory]);
+    addCategory(categories, setCategories);
   };
 
   const removeCategory = (id: number) => {
