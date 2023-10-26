@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, FC } from 'react';
 import Category from 'components/Category/Category';
 
 import { CategoryItem } from 'components/App.types';
 import addCategory from 'services/addCategory';
 
-const Categories = () => {
+type CategoriesProps = {
+  scale: number;
+};
+
+const Categories: FC<CategoriesProps> = ({ scale }) => {
   const [categories, setCategories] = useState<CategoryItem[]>([]);
 
   const addEmptyCategory = () => {
@@ -17,7 +21,7 @@ const Categories = () => {
 
   return (
     <>
-      <div className="categories-wrap">
+      <div className="categories-wrap" style={{ transform: `scale(${scale})` }}>
         <div className="categories">
           <h2>Categories</h2>
         </div>
@@ -25,10 +29,16 @@ const Categories = () => {
           ➕
         </button>
       </div>
-      <ul className="categories-list">
+      <ul className="categories-list" style={{ transform: `scale(${scale})` }}>
         {categories.length !== 0 &&
           categories.map(el => {
-            return <Category key={el.id} el={el} onRemove={removeCategory} />;
+            return (
+              <Category
+                key={el.id}
+                el={el}
+                onRemove={removeCategory}
+              />
+            );
           })}
       </ul>
     </>

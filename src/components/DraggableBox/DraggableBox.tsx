@@ -19,11 +19,13 @@ const DraggableBox: FC<DragableProps> = ({ children }) => {
     startX: 0,
     startY: 0,
     lastX: 0,
-    lastY: 0,
+    lastY: 10,
   });
 
   useEffect(() => {
-    if (!boxRef.current || !containerRef.current) return;
+    if (!boxRef.current || !containerRef.current) {
+      return;
+    }
 
     const box = boxRef.current;
     const container = containerRef.current;
@@ -44,7 +46,9 @@ const DraggableBox: FC<DragableProps> = ({ children }) => {
     };
 
     const onMouseMove = (e: MouseEvent) => {
-      if (!isClicked.current) return;
+      if (!isClicked.current) {
+        return;
+      }
 
       const nextX = e.clientX - coords.current.startX + coords.current.lastX;
       const nextY = e.clientY - coords.current.startY + coords.current.lastY;
@@ -58,14 +62,12 @@ const DraggableBox: FC<DragableProps> = ({ children }) => {
     container.addEventListener('mousemove', onMouseMove);
     container.addEventListener('mouseleave', onMouseUp);
 
-    const cleanup = () => {
+    return () => {
       box.removeEventListener('mousedown', onMouseDown);
       box.removeEventListener('mouseup', onMouseUp);
       container.removeEventListener('mousemove', onMouseMove);
       container.removeEventListener('mouseleave', onMouseUp);
     };
-
-    return cleanup;
   }, []);
 
   return (
