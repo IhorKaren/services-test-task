@@ -112,6 +112,12 @@ p {
   border: none;
 }
 
+.categories-thumb {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .categories-item {
   display: flex;
   flex-direction: column;

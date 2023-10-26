@@ -21,25 +21,22 @@ const SubCategories: FC<CategoryProps> = ({ el, onRemove }) => {
   };
 
   return (
-    <>
-      <CategoriesItem el={el} onAdd={addEmptySubCategory} onRemove={onRemove}>
-        <ul className="subcategories-list__secondary">
-          {subCategories.length !== 0 &&
-            subCategories.map(item => {
-              return (
-                <CategoriesItem
-                  key={item.id}
-                  el={item}
-                  onAdd={addEmptySubCategory}
-                  onRemove={removeSubCategory}
-                >
-                  {null}
-                </CategoriesItem>
-              );
-            })}
-        </ul>
-      </CategoriesItem>
-    </>
+    <div className='categories-thumb'>
+      <CategoriesItem el={el} onAdd={addEmptySubCategory} onRemove={onRemove} />
+      <ul className="subcategories-list__secondary">
+        {subCategories.length !== 0 &&
+          subCategories.map(item => {
+            return (
+              <CategoriesItem
+                key={item.id}
+                el={item}
+                onAdd={addEmptySubCategory}
+                onRemove={removeSubCategory}
+              />
+            );
+          })}
+      </ul>
+    </div>
   );
 };
 

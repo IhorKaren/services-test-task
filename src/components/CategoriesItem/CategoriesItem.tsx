@@ -1,4 +1,4 @@
-import { useState, FC, ReactNode } from 'react';
+import { useState, FC } from 'react';
 
 import { CategoryItem } from 'components/App.types';
 
@@ -6,15 +6,9 @@ type CategoryProps = {
   el: CategoryItem;
   onAdd: () => void;
   onRemove: (id: number) => void;
-  children: ReactNode;
 };
 
-const CategoriesItem: FC<CategoryProps> = ({
-  el,
-  onAdd,
-  onRemove,
-  children,
-}) => {
+const CategoriesItem: FC<CategoryProps> = ({ el, onAdd, onRemove }) => {
   const [categoryName, setCategoryName] = useState('');
   const [isInputShown, setIsInputShown] = useState(true);
 
@@ -24,6 +18,7 @@ const CategoriesItem: FC<CategoryProps> = ({
     }
 
     el.title = categoryName;
+    setCategoryName('');
     setIsInputShown(false);
   };
 
@@ -61,7 +56,6 @@ const CategoriesItem: FC<CategoryProps> = ({
               </button>
             </div>
           </div>
-          {children}
         </>
       )}
       {!isInputShown && (
@@ -88,7 +82,6 @@ const CategoriesItem: FC<CategoryProps> = ({
               </button>
             </div>
           </div>
-          {children}
         </>
       )}
     </li>
