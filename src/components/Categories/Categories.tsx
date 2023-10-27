@@ -23,7 +23,7 @@ const Categories: FC<CategoriesProps> = ({ scale }) => {
 
   return (
     <>
-      <div className="categories-wrap" style={{ transform: `scale(${scale})` }}>
+      <div className="categories-wrap">
         <div className="categories">
           <h2>Categories</h2>
         </div>
@@ -34,7 +34,7 @@ const Categories: FC<CategoriesProps> = ({ scale }) => {
         </button>
       </div>
 
-      <ul className="categories-list" style={{ transform: `scale(${scale})` }}>
+      <ul className="categories-list">
         {categories.length !== 0 &&
           categories.map(el => {
             return <Category key={el.id} el={el} onRemove={removeCategory} />;

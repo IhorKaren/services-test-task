@@ -2,12 +2,14 @@ import { FC, ReactNode, useEffect, useRef } from 'react';
 
 type DragableProps = {
   isCentered: boolean;
+  scale: number;
   centeredDisable: () => void;
   children: ReactNode;
 };
 
 const DraggableBox: FC<DragableProps> = ({
   isCentered,
+  scale,
   centeredDisable,
   children,
 }) => {
@@ -93,7 +95,9 @@ const DraggableBox: FC<DragableProps> = ({
           transform: isCentered ? 'translateX(-50%)' : '',
         }}
       >
-        {children}
+        <div className="zoom-wrap" style={{ transform: `scale(${scale})` }}>
+          {children}
+        </div>
       </div>
     </div>
   );

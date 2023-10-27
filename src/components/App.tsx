@@ -53,6 +53,7 @@ export const App = () => {
       />
       <main>
         <DraggableBox
+        scale={scale}
           isCentered={isCentered}
           centeredDisable={onCenteredBoxDisabledBtnClick}
         >
