@@ -75,6 +75,8 @@ p {
   cursor: move;
 }
 
+/* Header styles */
+
 .header {
   position: fixed;
   top: 0;
@@ -181,6 +183,8 @@ p {
   fill: black;
   stroke: black;
 }
+
+/* Board styles */
 
 .icon {
   width: 16px;
@@ -356,15 +360,17 @@ p {
   background-color: #b0bec6;
 }
 
+/* Moaal styles */
+
 .modal {
   position: absolute;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 20px;
   top: 60px;
   left: 0;
-  background-color: teal;
   width: 260px;
   height: 140px;
   padding: 20px;

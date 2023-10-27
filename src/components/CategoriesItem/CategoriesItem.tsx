@@ -29,6 +29,14 @@ const CategoriesItem: FC<CategoryProps> = ({ el, onAdd, onRemove }) => {
     setIsInputShown(true);
   };
 
+  const titleLengthChecker = (title: string): string => {
+    if (title.length > 12) {
+      return title.slice(0, 12) + '...';
+    }
+
+    return title;
+  };
+
   return (
     <li className="categories-item">
       {isInputShown && (
@@ -67,7 +75,9 @@ const CategoriesItem: FC<CategoryProps> = ({ el, onAdd, onRemove }) => {
       {!isInputShown && (
         <>
           <div className="categories-item-wrap">
-            <h3 className="subcategory-title">{el.title}</h3>
+            <h3 className="subcategory-title">
+              {titleLengthChecker(el.title)}
+            </h3>
             <div className="buttons-wrap">
               <button className="button" type="button" onClick={onAdd}>
                 <svg className="icon">
