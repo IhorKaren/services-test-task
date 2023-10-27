@@ -1,8 +1,8 @@
 import { useState, FC } from 'react';
 
-import icon from '../../icons/sprite.svg';
-
 import { CategoryItem } from 'components/App.types';
+
+import icon from '../../icons/sprite.svg';
 
 type CategoryProps = {
   el: CategoryItem;

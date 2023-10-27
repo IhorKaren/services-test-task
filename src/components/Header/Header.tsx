@@ -1,5 +1,6 @@
 import { FC, ChangeEvent } from 'react';
 import { options } from 'components/App';
+
 import icon from '../../icons/sprite.svg';
 
 type HeaderProps = {

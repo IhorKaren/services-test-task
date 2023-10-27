@@ -1,8 +1,8 @@
 import { useState, FC } from 'react';
 import Category from 'components/Category/Category';
+import addCategory from 'services/addCategory';
 
 import { CategoryItem } from 'components/App.types';
-import addCategory from 'services/addCategory';
 
 import icon from '../../icons/sprite.svg';
 

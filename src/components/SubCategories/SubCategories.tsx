@@ -1,9 +1,10 @@
 import { useState, FC } from 'react';
 
-import { CategoryItem } from 'components/App.types';
 import DialogWindow from 'components/DialogWindow/DialogWindow';
 import addCategory from 'services/addCategory';
 import CategoriesItem from 'components/CategoriesItem/CategoriesItem';
+
+import { CategoryItem } from 'components/App.types';
 
 type CategoryProps = {
   el: CategoryItem;
