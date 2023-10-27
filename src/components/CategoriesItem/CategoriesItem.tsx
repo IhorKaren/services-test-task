@@ -38,7 +38,7 @@ const CategoriesItem: FC<CategoryProps> = ({ el, onAdd, onRemove }) => {
   };
 
   return (
-    <div className="categories-item">
+    <div className="categories-thumb">
       {isInputShown && (
         <>
           <div className="categories-input-wrap">

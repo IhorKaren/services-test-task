@@ -33,6 +33,7 @@ const Categories: FC<CategoriesProps> = ({ scale }) => {
           </svg>
         </button>
       </div>
+
       <ul className="categories-list" style={{ transform: `scale(${scale})` }}>
         {categories.length !== 0 &&
           categories.map(el => {
