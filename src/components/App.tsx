@@ -8,9 +8,9 @@ export const options = [
 ];
 
 export const App = () => {
-  const [index, setIndex] = useState(8);
-  const [scale, setScale] = useState(1);
-  const [isCentered, setIsCentered] = useState(false);
+  const [index, setIndex] = useState<number>(8);
+  const [scale, setScale] = useState<number>(1);
+  const [isCentered, setIsCentered] = useState<boolean>(false);
 
   const handleScaleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const toNumber = Number(e.target.value);

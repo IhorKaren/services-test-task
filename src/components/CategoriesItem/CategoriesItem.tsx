@@ -11,8 +11,8 @@ type CategoryProps = {
 };
 
 const CategoriesItem: FC<CategoryProps> = ({ el, onAdd, onRemove }) => {
-  const [categoryName, setCategoryName] = useState('');
-  const [isInputShown, setIsInputShown] = useState(true);
+  const [categoryName, setCategoryName] = useState<string>('');
+  const [isInputShown, setIsInputShown] = useState<boolean>(true);
 
   const addCategoryTitle = () => {
     if (categoryName.trim() === '') {

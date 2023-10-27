@@ -12,7 +12,7 @@ type CategoryProps = {
 };
 
 const Category: FC<CategoryProps> = ({ el, onRemove }) => {
-  const [isDialogShow, setIsDialogShow] = useState(false);
+  const [isDialogShow, setIsDialogShow] = useState<boolean>(false);
   const [subCategories, setSubCategories] = useState<CategoryItem[]>([]);
 
   const addEmptySubCategory = () => {
