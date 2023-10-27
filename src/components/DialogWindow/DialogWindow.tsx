@@ -1,4 +1,4 @@
-import { FC, useEffect, MouseEvent } from 'react';
+import { FC, useEffect } from 'react';
 
 type DialogWindowProps = {
   addSubCategoty: () => void;

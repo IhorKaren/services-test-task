@@ -1,5 +1,7 @@
 import { useState, FC } from 'react';
 
+import icon from '../../icons/sprite.svg';
+
 import { CategoryItem } from 'components/App.types';
 
 type CategoryProps = {
@@ -41,18 +43,22 @@ const CategoriesItem: FC<CategoryProps> = ({ el, onAdd, onRemove }) => {
             />
             <div className="buttons-wrap">
               <button
-                className="button"
+                className="button warning"
                 type="button"
                 onClick={() => onRemove(el.id)}
               >
-                ❌
+                <svg className="icon" style={{ width: '20px', height: '20px' }}>
+                  <use href={icon + '#delete'} />
+                </svg>
               </button>
               <button
-                className="button"
+                className="button success"
                 type="button"
                 onClick={addCategoryTitle}
               >
-                🆗
+                <svg className="icon">
+                  <use href={icon + '#done'} />
+                </svg>
               </button>
             </div>
           </div>
@@ -64,21 +70,27 @@ const CategoriesItem: FC<CategoryProps> = ({ el, onAdd, onRemove }) => {
             <h3 className="subcategory-title">{el.title}</h3>
             <div className="buttons-wrap">
               <button className="button" type="button" onClick={onAdd}>
-                ➕
+                <svg className="icon">
+                  <use href={icon + '#plus'} />
+                </svg>
               </button>
               <button
                 className="button"
                 type="button"
                 onClick={() => changeCategoryTitle(el.title)}
               >
-                ✏
+                <svg className="icon" style={{ width: '12px', height: '12px' }}>
+                  <use href={icon + '#pencil'} />
+                </svg>
               </button>
               <button
-                className="button"
+                className="button danger"
                 type="button"
                 onClick={() => onRemove(el.id)}
               >
-                ❌
+                <svg className="icon" style={{ width: '20px', height: '20px' }}>
+                  <use href={icon + '#delete'} />
+                </svg>
               </button>
             </div>
           </div>

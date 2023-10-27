@@ -4,6 +4,8 @@ import Category from 'components/Category/Category';
 import { CategoryItem } from 'components/App.types';
 import addCategory from 'services/addCategory';
 
+import icon from '../../icons/sprite.svg';
+
 type CategoriesProps = {
   scale: number;
 };
@@ -26,7 +28,9 @@ const Categories: FC<CategoriesProps> = ({ scale }) => {
           <h2>Categories</h2>
         </div>
         <button className="button" type="button" onClick={addEmptyCategory}>
-          ➕
+          <svg className="icon">
+            <use href={icon + '#plus'} />
+          </svg>
         </button>
       </div>
       <ul className="categories-list" style={{ transform: `scale(${scale})` }}>
