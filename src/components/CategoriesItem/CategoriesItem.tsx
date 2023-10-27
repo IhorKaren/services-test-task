@@ -38,7 +38,7 @@ const CategoriesItem: FC<CategoryProps> = ({ el, onAdd, onRemove }) => {
   };
 
   return (
-    <li className="categories-item">
+    <div className="categories-item">
       {isInputShown && (
         <>
           <div className="categories-input-wrap">
@@ -73,40 +73,36 @@ const CategoriesItem: FC<CategoryProps> = ({ el, onAdd, onRemove }) => {
         </>
       )}
       {!isInputShown && (
-        <>
-          <div className="categories-item-wrap">
-            <h3 className="subcategory-title">
-              {titleLengthChecker(el.title)}
-            </h3>
-            <div className="buttons-wrap">
-              <button className="button" type="button" onClick={onAdd}>
-                <svg className="icon">
-                  <use href={icon + '#plus'} />
-                </svg>
-              </button>
-              <button
-                className="button"
-                type="button"
-                onClick={() => changeCategoryTitle(el.title)}
-              >
-                <svg className="icon" style={{ width: '12px', height: '12px' }}>
-                  <use href={icon + '#pencil'} />
-                </svg>
-              </button>
-              <button
-                className="button danger"
-                type="button"
-                onClick={() => onRemove(el.id)}
-              >
-                <svg className="icon" style={{ width: '20px', height: '20px' }}>
-                  <use href={icon + '#delete'} />
-                </svg>
-              </button>
-            </div>
+        <div className="categories-item-wrap">
+          <h3 className="subcategory-title">{titleLengthChecker(el.title)}</h3>
+          <div className="buttons-wrap">
+            <button className="button" type="button" onClick={onAdd}>
+              <svg className="icon">
+                <use href={icon + '#plus'} />
+              </svg>
+            </button>
+            <button
+              className="button"
+              type="button"
+              onClick={() => changeCategoryTitle(el.title)}
+            >
+              <svg className="icon" style={{ width: '12px', height: '12px' }}>
+                <use href={icon + '#pencil'} />
+              </svg>
+            </button>
+            <button
+              className="button danger"
+              type="button"
+              onClick={() => onRemove(el.id)}
+            >
+              <svg className="icon" style={{ width: '20px', height: '20px' }}>
+                <use href={icon + '#delete'} />
+              </svg>
+            </button>
           </div>
-        </>
+        </div>
       )}
-    </li>
+    </div>
   );
 };
 

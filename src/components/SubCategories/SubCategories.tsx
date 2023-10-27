@@ -29,7 +29,7 @@ const SubCategories: FC<CategoryProps> = ({ el, onRemove }) => {
   };
 
   return (
-    <div className="categories-thumb">
+    <li className="categories-thumb">
       <CategoriesItem el={el} onAdd={addEmptySubCategory} onRemove={onRemove} />
       {subCategories.length > 0 ? (
         <ul className="subcategories-list__secondary">
@@ -53,7 +53,7 @@ const SubCategories: FC<CategoryProps> = ({ el, onRemove }) => {
           />
         )
       )}
-    </div>
+    </li>
   );
 };
 
