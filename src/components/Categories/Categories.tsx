@@ -1,4 +1,4 @@
-import { useState, FC } from 'react';
+import { useState } from 'react';
 import Category from 'components/Category/Category';
 import addCategory from 'services/addCategory';
 
@@ -6,11 +6,7 @@ import { CategoryItem } from 'components/App.types';
 
 import icon from '../../icons/sprite.svg';
 
-type CategoriesProps = {
-  scale: number;
-};
-
-const Categories: FC<CategoriesProps> = ({ scale }) => {
+const Categories = () => {
   const [categories, setCategories] = useState<CategoryItem[]>([]);
 
   const addEmptyCategory = () => {

@@ -53,11 +53,11 @@ export const App = () => {
       />
       <main>
         <DraggableBox
-        scale={scale}
+          scale={scale}
           isCentered={isCentered}
           centeredDisable={onCenteredBoxDisabledBtnClick}
         >
-          <Categories scale={scale} />
+          <Categories/>
         </DraggableBox>
       </main>
     </>
