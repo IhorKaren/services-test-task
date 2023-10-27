@@ -41,7 +41,7 @@ const DraggableBox: FC<DragableProps> = ({
 
     if (isCentered) {
       coords.current.lastY = container.clientHeight / 3.5;
-      coords.current.lastX = container.clientWidth / 1.7;
+      coords.current.lastX = container.clientWidth / 2;
     }
 
     const onMouseDown = (e: MouseEvent) => {
