@@ -73,8 +73,6 @@ p {
   user-select: none;
 
   cursor: move;
-
-
 }
 
 .header {
@@ -155,6 +153,7 @@ p {
 
 .categories-thumb {
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 20px;
 }
@@ -242,4 +241,45 @@ p {
 
 .subcategories-list__secondary .categories-item-wrap {
   background-color: #b0bec6;
+}
+
+.modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  top: 60px;
+  left: 0;
+  background-color: teal;
+  width: 260px;
+  height: 140px;
+  padding: 20px;
+
+  color: black;
+  background-color: white;
+
+  box-shadow: 0px 4px 12px rgba(24, 9, 96, 0.1);
+}
+
+.modal-thumb {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-button {
+  padding: 10px;
+  background-color: #b0bec6;
+  border: none;
+
+  cursor: pointer;
+
+  font-weight: 600;
+  color: #9a9b9d;
+  background-color: #f6f7f9;
+}
+
+.modal-button:disabled {
+  cursor: not-allowed;
 }
