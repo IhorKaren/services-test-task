@@ -36,7 +36,8 @@ const DraggableBox: FC<DragableProps> = ({
     const box = boxRef.current;
     const container = containerRef.current;
 
-    coords.current.lastX = box.getBoundingClientRect().left;
+    coords.current.lastX =
+      box.getBoundingClientRect().left + box.clientWidth / 2;
 
     if (isCentered) {
       coords.current.lastY = container.clientHeight / 3.5;
@@ -88,7 +89,8 @@ const DraggableBox: FC<DragableProps> = ({
         className="box"
         style={{
           top: isCentered ? `30%` : '',
-          left: isCentered ? '45%' : '',
+          left: isCentered ? '50%' : '',
+          transform: isCentered ? 'translateX(-50%)' : '',
         }}
       >
         {children}
